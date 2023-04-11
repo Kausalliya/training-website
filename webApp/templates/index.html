@@ -41,7 +41,68 @@
     margin-bottom: 0;
   }
 }
-   
+  
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  background-color: rgba(0,0,0, .5);
+}
+
+.modal-content {
+  background-color: #ffffff;
+  margin: 20% auto;
+  padding: .5em;
+  box-shadow: 0 5px 8px 0 rgba(0,0,0, .2), 0 7px 20px 0 rgba(0,0,0, .17);
+  animation-name: modalopen;
+  animation-duration: 1.75s;
+}
+
+@keyframes modalopen {
+  from{opacity: 0}
+  to {opacity: 1}
+}
+
+.modal-header h2, .modal-footer h3 {
+  margin: 0;
+  color: white;
+}
+
+.modal-header {
+  background: #06BBCC;
+  padding: 15px;
+  color: white;
+}
+
+.modal-body {
+  padding: 10px 20px;
+}
+
+
+.closeBtn {
+  color: #ccc;
+  float:right;
+  font-size: 1.875em;
+  color: white;
+}
+
+.closeBtn:hover, .closeBtn:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button {
+  color: white;
+  border: none;
+  border-radius: 2em;
+  padding: 0.5em 3.25em;
+  background: #06BBCC;
+}
+
 </style>
 
 <!-- Carousel Start -->
@@ -57,7 +118,8 @@
                             <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Training Programs</h5>
                             <p class="fs-5 text-white mb-4 pb-2">We are focused on providing advanced level software training like Big Data Training, Hadoop Training, Data Science Training, Python Training, Machine Learning Training, Selenium Training in Cochin Kerala.</p>
                             <!-- <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a> -->
-                            <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</a>
+                            <button class="btn btn-light py-md-3 px-md-5 animated slideInRight  modal-btn" id="modalBtn">Book Demo</button>
+                            <a href="" class="btn btn-light py-md-3 px-md-5  ml-3 animated slideInRight " >Join Now</a>
                         </div>
                     </div>
                 </div>
@@ -74,7 +136,8 @@
                             <p class="fs-5 text-white mb-4 pb-2">&#10004; &nbsp;&nbsp; Infopark based No.1 Professional Training Center.</p>
                             <p class="fs-5 text-white mb-4 pb-2"> &#10004; &nbsp;&nbsp; Our Students are Well Placed across the Globe.</p>
                             <!-- <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a> -->
-                            <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</a>
+                            <button class="btn btn-light py-md-3 px-md-5 animated slideInRight  modal-btn" id="modalBtn">Book Demo</button>
+                            <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight ml-3">Join Now</a>
                         </div>
                     </div>
                 </div>
@@ -455,6 +518,89 @@
     </div>
 </div>
 <!-- Testimonial End -->
-        
+<div class="">
+    <div id="simpleModal" class="modal ">
+       <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content ">
+        <div class="modal-header">
+         
+          <h2>Book Demo Class</h2>
+          <span class="closeBtn">&times;</span>
+        </div>
+        <div class="modal-body">
+           <form>
+               <div class="form-group mt-3">
+                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter first name">
+                
+               </div>
+               <div class="form-group mt-3">
+                 <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter last name">
+               </div>
+               <div class="form-group mt-3">
+                   <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter mobile number">
+               </div>
+               <div class="form-group mt-3">
+                   <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter email id">
+               </div>
+               <div class="form-group mt-3">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Select course--</option>
+                    <option value="1">Flutter</option>
+                    <option value="2">Python</option>
+                    <option value="3">Java</option>
+                    <option value="4">C/C++</option>
+                    <option value="5">Data Science</option>
+
+
+                  </select>
+               </div>
+               <a data-glf-cuid="06a81907-5b80-4290-9392-2c3b0b166ca8" data-glf-ruid="d4d87ac8-e97e-4fcf-a1bb-c8611f57c680"><button type="submit" class="button mt-3">Submit</button></a>
+
+             </form>
+    
+        </div>
+       
+      </div>
+   </div>
+    </div>
+   </div>
+   <script>
+ // Modal Button
+
+
+// Get modal element
+const modal = document.getElementById('simpleModal');
+// All page modals
+var modals = document.querySelectorAll('.modal');
+// Get open modal button
+const modalBtn = document.querySelectorAll('.modal-btn');
+// Get close button
+const closeBtn = document.getElementsByClassName('closeBtn')[0];
+
+// Listen 	for OPEN Click
+modalBtn.forEach(function(e) {
+e.addEventListener('click', openModal);
+})
+// Listen for CLOSE Click
+closeBtn.addEventListener('click', closeModal);
+// Listen for OUTSIDE Click
+window.addEventListener('click', outsideClick);
+
+// Function to OPEN modal
+function openModal() {
+ modal.style.display = "block";
+}
+
+// Function to CLOSE modal
+function closeModal() {
+ modal.style.display = "none";
+}
+// Function to CLOSE modal
+function outsideClick(e) {
+ if(e.target == modal) {
+   modal.style.display = "none";
+ }
+}
+</script>
 
     {% endblock %}

@@ -21,3 +21,6 @@ def testimonial(request):
     return render(request,'testimonial.html')
 def placement(request):
     return render(request,'placement.html')
+
+def registration(request):
+    return render(request,'registration.html')
